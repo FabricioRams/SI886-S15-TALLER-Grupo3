@@ -28,7 +28,7 @@
 
 ---
 
-> **Nota previa a la entrega en Aula Virtual:** De acuerdo con la guía del taller (`3-TALLER.md`), la entrega oficial se exporta desde `SI886-PLANTILLA-TALLER.docx` a **`SI886-S15-TALLER-Grupo3.pdf`** con la carátula institucional, los códigos reales de todos los integrantes, el índice actualizado y las URLs verificables tras ejecutar `git push` de la etiqueta `taller-15`. El presente documento Markdown consolida integralmente el desarrollo técnico del taller (Pasos A–G) y el contenido completo requerido por la plantilla.
+> **Nota previa a la entrega en Aula Virtual:** De acuerdo con la guía del taller (`3-TALLER.md`), la entrega oficial se exporta desde `SI886-PLANTILLA-TALLER.docx` a **`SI886-S15-TALLER-Grupo3.pdf`** con la carátula institucional, los códigos reales de todos los integrantes, el índice actualizado y las URLs verificables de la etiqueta `taller-15` en el repositorio. El presente documento Markdown consolida integralmente el desarrollo técnico del taller (Pasos A–G) y el contenido completo requerido por la plantilla.
 
 ---
 
@@ -161,6 +161,8 @@ Se identificaron **14 riesgos (`R-01` a `R-14`)** redactados como **evento + cau
 
 ![Mapa de calor de riesgos del PETI - Municipalidad Distrital de Alto Selva](graficos/RG_mapa_calor.png)
 
+*Figura 1. Mapa de calor de los riesgos de ejecución del PETI de la Municipalidad Distrital de Alto Selva (matriz 5 × 5 generada con `RG03_evaluacion.py`). Se observa la concentración de 10 riesgos en zona alta y crítica (`P ≥ 3`, `I ≥ 3`), con foco máximo en `R-01` y `R-02` (`P=4, I=5`).*
+
 ---
 
 ### Paso C — Tratamiento, señal temprana, riesgo residual y SimpleRisk
@@ -252,7 +254,6 @@ La redacción completa de la **Sección 8. Gestión de riesgos del plan** (subse
 
 1. **SimpleRisk en Docker:** Al verificar el entorno (`docker info` en Windows), el cliente Docker CLI (`v28.4.0`) está instalado, pero el servicio de **Docker Desktop no se encontraba en ejecución**, por lo que no se levantaron los contenedores `peti_srdb` y `peti_simplerisk` ni se tomaron capturas reales de la interfaz web. *Acción de mejora:* iniciar Docker Desktop, ejecutar los dos comandos `docker run` del Paso C, cargar los 10 riesgos `≥ 12` en `http://127.0.0.1:8084` y guardar las capturas en `evidencias/S15/`.
 2. **Firmas reales y datos de carátula:** El Anexo de aceptación formal de los 7 riesgos residuales (`> 6`) queda redactado en el Anexo A para firma de la Gerencia Municipal; asimismo, en la carátula se deben completar los nombres y códigos de los integrantes del Grupo 3 antes de exportar a PDF desde `SI886-PLANTILLA-TALLER.docx`.
-3. **Publicación remota en GitHub:** Las etiquetas `v0.15` y `taller-15` fueron creadas localmente; resta ejecutar `git push origin main --tags` (o vía Pull Request a `develop` según flujo del equipo) para activar las URLs públicas en GitHub.
 
 #### Pregunta de transferencia (Paso G)
 
@@ -272,24 +273,24 @@ La redacción completa de la **Sección 8. Gestión de riesgos del plan** (subse
 
 ### 4.2 Lista de comprobación del taller (Sección 3.2 — 14 resultados)
 
-*(Las URLs remotas apuntan a la etiqueta `taller-15` en `https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/tree/taller-15` una vez ejecutado el `git push`).*
+*(Las URLs apuntan a la etiqueta `taller-15` en `https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/tree/taller-15`).*
 
-| # | Resultado esperado | Evidencia local verificada | URL en GitHub (tras `git push`) / Estado |
+| # | Resultado esperado | Evidencia local verificada | URL en GitHub (`taller-15`) / Estado |
 |---|---|---|---|
-| 1 | Contexto y criterios definidos, con fecha de acuerdo anterior a la evaluación | [`08_riesgos/RG01_contexto.md`](08_riesgos/RG01_contexto.md) + commit `c2ab4b0` | `.../blob/taller-15/08_riesgos/RG01_contexto.md` (Completo local) |
-| 2 | Escalas de probabilidad e impacto con definición operativa escrita | [`08_riesgos/RG01_contexto.md`](08_riesgos/RG01_contexto.md) (Sec. 2) | `.../blob/taller-15/08_riesgos/RG01_contexto.md` (Completo local) |
-| 3 | Las nueve categorías evaluadas; las omitidas, justificadas | [`evidencias/S15/salidas/RG03_evaluacion.txt`](evidencias/S15/salidas/RG03_evaluacion.txt) (`ninguna ✔`) | `.../blob/taller-15/evidencias/S15/salidas/RG03_evaluacion.txt` (Completo local) |
-| 4 | Registro con `≥ 12` riesgos, redactados como evento + causa + consecuencia | [`08_riesgos/RG02_registro.csv`](08_riesgos/RG02_registro.csv) (14 riesgos) | `.../blob/taller-15/08_riesgos/RG02_registro.csv` (Completo local) |
-| 5 | Cada riesgo trazado a los objetivos y proyectos que afecta | [`08_riesgos/RG02_registro.csv`](08_riesgos/RG02_registro.csv) (columna `Objetivos o proyectos afectados`) | `.../blob/taller-15/08_riesgos/RG02_registro.csv` (Completo local) |
-| 6 | Mapa de calor generado | [`graficos/RG_mapa_calor.png`](graficos/RG_mapa_calor.png) | `.../blob/taller-15/graficos/RG_mapa_calor.png` (Completo local) |
-| 7 | Riesgos `≥ 15` identificados como decisión de la gerencia general | [`evidencias/S15/salidas/RG03_evaluacion.txt`](evidencias/S15/salidas/RG03_evaluacion.txt) (6 riesgos: `R-01`..`R-06`) | `.../blob/taller-15/evidencias/S15/salidas/RG03_evaluacion.txt` (Completo local) |
-| 8 | Tratamiento definido para todos los riesgos de valor `> 6` | [`08_riesgos/RG04_tratamiento.csv`](08_riesgos/RG04_tratamiento.csv) (13/13 riesgos) | `.../blob/taller-15/08_riesgos/RG04_tratamiento.csv` (Completo local) |
-| 9 | Riesgo residual calculado, con la reducción lograda | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (89 pts / 50 %) | `.../blob/taller-15/evidencias/S15/salidas/RG05_residual.txt` (Completo local) |
-| 10 | Señal temprana y umbral de alerta en cada riesgo `> 6`; cero sin señal | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (`0 → []`) | `.../blob/taller-15/evidencias/S15/salidas/RG05_residual.txt` (Completo local) |
-| 11 | Riesgos residuales sobre el criterio con responsable de aceptación identificado | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (7 riesgos → Gerencia Municipal) | `.../blob/taller-15/evidencias/S15/salidas/RG05_residual.txt` (Completo local) |
+| 1 | Contexto y criterios definidos, con fecha de acuerdo anterior a la evaluación | [`08_riesgos/RG01_contexto.md`](08_riesgos/RG01_contexto.md) + commit `c2ab4b0` | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/RG01_contexto.md |
+| 2 | Escalas de probabilidad e impacto con definición operativa escrita | [`08_riesgos/RG01_contexto.md`](08_riesgos/RG01_contexto.md) (Sec. 2) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/RG01_contexto.md |
+| 3 | Las nueve categorías evaluadas; las omitidas, justificadas | [`evidencias/S15/salidas/RG03_evaluacion.txt`](evidencias/S15/salidas/RG03_evaluacion.txt) (`ninguna ✔`) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/salidas/RG03_evaluacion.txt |
+| 4 | Registro con `≥ 12` riesgos, redactados como evento + causa + consecuencia | [`08_riesgos/RG02_registro.csv`](08_riesgos/RG02_registro.csv) (14 riesgos) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/RG02_registro.csv |
+| 5 | Cada riesgo trazado a los objetivos y proyectos que afecta | [`08_riesgos/RG02_registro.csv`](08_riesgos/RG02_registro.csv) (columna `Objetivos o proyectos afectados`) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/RG02_registro.csv |
+| 6 | Mapa de calor generado | [`graficos/RG_mapa_calor.png`](graficos/RG_mapa_calor.png) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/graficos/RG_mapa_calor.png |
+| 7 | Riesgos `≥ 15` identificados como decisión de la gerencia general | [`evidencias/S15/salidas/RG03_evaluacion.txt`](evidencias/S15/salidas/RG03_evaluacion.txt) (6 riesgos: `R-01`..`R-06`) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/salidas/RG03_evaluacion.txt |
+| 8 | Tratamiento definido para todos los riesgos de valor `> 6` | [`08_riesgos/RG04_tratamiento.csv`](08_riesgos/RG04_tratamiento.csv) (13/13 riesgos) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/RG04_tratamiento.csv |
+| 9 | Riesgo residual calculado, con la reducción lograda | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (89 pts / 50 %) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/salidas/RG05_residual.txt |
+| 10 | Señal temprana y umbral de alerta en cada riesgo `> 6`; cero sin señal | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (`0 → []`) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/salidas/RG05_residual.txt |
+| 11 | Riesgos residuales sobre el criterio con responsable de aceptación identificado | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (7 riesgos → Gerencia Municipal) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/salidas/RG05_residual.txt |
 | 12 | Registro cargado en SimpleRisk con escalas y criterio configurados | *Pendiente por Docker Desktop detenido en equipo local* | Ver sección *Problemas y mejoras* (pendiente captura en `evidencias/S15/`) |
-| 13 | Matriz de comunicación con las ocho columnas | [`08_riesgos/RG06_comunicacion.csv`](08_riesgos/RG06_comunicacion.csv) | `.../blob/taller-15/08_riesgos/RG06_comunicacion.csv` (Completo local) |
-| 14 | Sección 8 redactada · etiqueta `v0.15` | [`08_riesgos/seccion_08_gestion_riesgos.md`](08_riesgos/seccion_08_gestion_riesgos.md) + tags `v0.15` / `taller-15` | `.../blob/taller-15/08_riesgos/seccion_08_gestion_riesgos.md` (Completo local) |
+| 13 | Matriz de comunicación con las ocho columnas | [`08_riesgos/RG06_comunicacion.csv`](08_riesgos/RG06_comunicacion.csv) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/RG06_comunicacion.csv |
+| 14 | Sección 8 redactada · etiqueta `v0.15` | [`08_riesgos/seccion_08_gestion_riesgos.md`](08_riesgos/seccion_08_gestion_riesgos.md) + tags `v0.15` / `taller-15` | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/seccion_08_gestion_riesgos.md |
 
 ---
 
