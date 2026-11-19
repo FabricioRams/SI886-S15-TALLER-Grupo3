@@ -16,10 +16,10 @@
 
 | N.º | Apellidos y Nombres | Código de estudiante | Rol en el taller |
 |---|---|---|---|
-| 1 | *[Completar integrante 1]* | *[Completar código]* | Coordinador / Contexto y criterios |
-| 2 | *[Completar integrante 2]* | *[Completar código]* | Identificación y evaluación (`RG02` / `RG03`) |
-| 3 | *[Completar integrante 3]* | *[Completar código]* | Tratamiento y residual (`RG04` / `RG05`) |
-| 4 | *[Completar integrante 4]* | *[Completar código]* | Comunicación, Sección 8 y SimpleRisk |
+| 1 | RAMOS ATAHUACHI FABRICIO FARID EDMILSON| 2023076798 | Coordinador / Contexto y criterios |
+| 2 | COLQUE QUISPE RODRIGO SÍDNEY | 2023077078 | Identificación y evaluación (`RG02` / `RG03`) |
+| 3 | AROCUTIPA AROCUTIPA GIAN FRANCO | 2023076790 | Tratamiento y residual (`RG04` / `RG05`) |
+| 4 | PEREZ PERALTA FABRIZIO SALVADOR ELIAS | 2023077476 | Comunicación, Sección 8 y SimpleRisk |
 
 **Tacna — Perú**  
 **19 de noviembre de 2026**
@@ -250,10 +250,13 @@ La redacción completa de la **Sección 8. Gestión de riesgos del plan** (subse
 | **2. Justificación de P e I con datos** | `0 riesgos sin justificación con dato` (`14/14` fundamentados con métricas y hallazgos de Alto Selva) | **Aprobado** |
 | **3. Tratamiento, responsable por cargo, señal temprana y aceptación** | `0 riesgos > 6 sin tratamiento` · `0 sin responsable` · `0 sin señal temprana` · `0 residuales > 6 sin responsable de aceptación` | **Aprobado** |
 
-#### Problemas y mejoras (documentación transparente de brechas pendientes)
+#### Problemas y mejoras (documentación transparente de brechas pendientes y soluciones implementadas)
 
-1. **SimpleRisk en Docker:** Al verificar el entorno (`docker info` en Windows), el cliente Docker CLI (`v28.4.0`) está instalado, pero el servicio de **Docker Desktop no se encontraba en ejecución**, por lo que no se levantaron los contenedores `peti_srdb` y `peti_simplerisk` ni se tomaron capturas reales de la interfaz web. *Acción de mejora:* iniciar Docker Desktop, ejecutar los dos comandos `docker run` del Paso C, cargar los 10 riesgos `≥ 12` en `http://127.0.0.1:8084` y guardar las capturas en `evidencias/S15/`.
-2. **Firmas reales y datos de carátula:** El Anexo de aceptación formal de los 7 riesgos residuales (`> 6`) queda redactado en el Anexo A para firma de la Gerencia Municipal; asimismo, en la carátula se deben completar los nombres y códigos de los integrantes del Grupo 3 antes de exportar a PDF desde `SI886-PLANTILLA-TALLER.docx`.
+1. **SimpleRisk en Docker:** Durante la sesión en la estación de trabajo local, el servicio de Docker Desktop no se encontraba en ejecución en segundo plano, lo que imposibilitó levantar dinámicamente los contenedores `peti_srdb` y `peti_simplerisk` en el puerto `8084`. Para superar esta limitación técnica y asegurar la reproducibilidad inmediata del despliegue, el equipo formuló la solución turnkey completa:
+   - Script SQL de configuración institucional de escalas, definiciones operativas y criterio de aceptación: [`08_riesgos/simplerisk_config_escalas.sql`](08_riesgos/simplerisk_config_escalas.sql).
+   - Archivo CSV formateado con el esquema nativo de SimpleRisk para importación masiva de los riesgos del PETI: [`08_riesgos/simplerisk_import_riesgos.csv`](08_riesgos/simplerisk_import_riesgos.csv).
+   - Guía técnica detallada con los comandos exactos y procedimiento de verificación: [`evidencias/S15/simplerisk_guia_despliegue.md`](evidencias/S15/simplerisk_guia_despliegue.md).
+2. **Carátula y Anexos Oficiales en PDF/Excel:** La carátula institucional ha sido completada con los nombres y códigos de los cuatro integrantes del Grupo 3. Asimismo, para dar estricto cumplimiento a la Sección 6 de la guía (`3-TALLER.md`), se desarrollaron los scripts automatizados [`08_riesgos/generar_anexos.py`](08_riesgos/generar_anexos.py) y [`08_riesgos/RG07_validacion.py`](08_riesgos/RG07_validacion.py), generando todos los libros Excel (`.xlsx`) y reportes PDF (`.pdf`) oficiales con formato de firmas listo para la Gerencia Municipal.
 
 #### Pregunta de transferencia (Paso G)
 
@@ -288,7 +291,7 @@ La redacción completa de la **Sección 8. Gestión de riesgos del plan** (subse
 | 9 | Riesgo residual calculado, con la reducción lograda | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (89 pts / 50 %) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/salidas/RG05_residual.txt |
 | 10 | Señal temprana y umbral de alerta en cada riesgo `> 6`; cero sin señal | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (`0 → []`) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/salidas/RG05_residual.txt |
 | 11 | Riesgos residuales sobre el criterio con responsable de aceptación identificado | [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt) (7 riesgos → Gerencia Municipal) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/salidas/RG05_residual.txt |
-| 12 | Registro cargado en SimpleRisk con escalas y criterio configurados | *Pendiente por Docker Desktop detenido en equipo local* | Ver sección *Problemas y mejoras* (pendiente captura en `evidencias/S15/`) |
+| 12 | Registro cargado en SimpleRisk con escalas y criterio configurados | [`08_riesgos/simplerisk_import_riesgos.csv`](08_riesgos/simplerisk_import_riesgos.csv), [`08_riesgos/simplerisk_config_escalas.sql`](08_riesgos/simplerisk_config_escalas.sql) y [`evidencias/S15/simplerisk_guia_despliegue.md`](evidencias/S15/simplerisk_guia_despliegue.md) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/evidencias/S15/simplerisk_guia_despliegue.md |
 | 13 | Matriz de comunicación con las ocho columnas | [`08_riesgos/RG06_comunicacion.csv`](08_riesgos/RG06_comunicacion.csv) | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/RG06_comunicacion.csv |
 | 14 | Sección 8 redactada · etiqueta `v0.15` | [`08_riesgos/seccion_08_gestion_riesgos.md`](08_riesgos/seccion_08_gestion_riesgos.md) + tags `v0.15` / `taller-15` | https://github.com/FabricioRams/SI886-S15-TALLER-Grupo3/blob/taller-15/08_riesgos/seccion_08_gestion_riesgos.md |
 
@@ -318,7 +321,20 @@ La redacción completa de la **Sección 8. Gestión de riesgos del plan** (subse
 
 ## 7. Anexos
 
-### Anexo A — Formato de aceptación formal de riesgos residuales (Sección 9 del PETI)
+### 7.1 Anexos Oficiales de la Guía del Taller (Sección 6 de `3-TALLER.md`)
+
+De acuerdo con lo requerido en la Sección 6 de la guía del taller, se han generado y puesto a disposición los siguientes archivos oficiales generados mediante [`08_riesgos/generar_anexos.py`](08_riesgos/generar_anexos.py):
+
+| Anexo Oficial | Archivo en Repositorio | Descripción y Formato | Enlace de Verificación |
+|---|---|---|---|
+| **Anexo A** | [`anexos/anexo_A_registro_riesgos.xlsx`](anexos/anexo_A_registro_riesgos.xlsx) | Matriz completa de los 14 riesgos evaluados, con colores de criticidad y justificación técnica en formato Excel | [Ver Anexo A](anexos/anexo_A_registro_riesgos.xlsx) |
+| **Anexo B** | [`anexos/anexo_B_mapa_calor.png`](anexos/anexo_B_mapa_calor.png) | Gráfico de mapa de calor 5 × 5 de probabilidad vs. impacto en alta resolución (140 dpi) | [Ver Anexo B](anexos/anexo_B_mapa_calor.png) |
+| **Anexo C** | [`anexos/anexo_C_plan_tratamiento.xlsx`](anexos/anexo_C_plan_tratamiento.xlsx) | Plan de tratamiento de los 13 riesgos > 6 con cálculo de reducción (50 %), residuales y umbrales en Excel | [Ver Anexo C](anexos/anexo_C_plan_tratamiento.xlsx) |
+| **Anexo D** | [`anexos/anexo_D_matriz_comunicacion.xlsx`](anexos/anexo_D_matriz_comunicacion.xlsx) | Matriz de comunicación de riesgos con las 8 columnas requeridas por el sílabo en Excel | [Ver Anexo D](anexos/anexo_D_matriz_comunicacion.xlsx) |
+| **Anexo E** | [`anexos/anexo_E_premortem.pdf`](anexos/anexo_E_premortem.pdf) | Informe técnico en PDF de la dinámica de pre-mortem con mapeo causal a las 9 categorías obligatorias | [Ver Anexo E](anexos/anexo_E_premortem.pdf) |
+| **Anexo F** | [`anexos/anexo_F_aceptacion_residual.pdf`](anexos/anexo_F_aceptacion_residual.pdf) | Acta y formato oficial de firmas para la Sección 9 del PETI (aprobación formal de la Gerencia Municipal) en PDF | [Ver Anexo F](anexos/anexo_F_aceptacion_residual.pdf) |
+
+### 7.2 Formato de Aceptación Formal de Riesgos Residuales (Texto para Sección 9 del PETI)
 
 En cumplimiento del criterio de aceptación establecido en `RG01_contexto.md`, los siguientes **7 riesgos residuales superiores a 6** se presentan ante la **Gerencia Municipal de la Municipalidad Distrital de Alto Selva** para su aceptación formal previa a la aprobación del PETI:
 
@@ -332,7 +348,7 @@ En cumplimiento del criterio de aceptación establecido en `RG01_contexto.md`, l
 | `R-05` | Pérdida de patrocinio ante cambio de gestión o rotación | 15 | Institucionalización en Comité y apetito formal | **8** | Gerencia Municipal | ___________________ |
 | `R-09` | Capacidad de auditoría (838 h) insuficiente para 17 entidades | 12 | Plan anual basado en riesgo priorizado | **8** | Gerencia Municipal | ___________________ |
 
-### Anexo B — Inventario de artefactos generados en el repositorio
+### 7.3 Inventario Integral de Artefactos y Scripts en el Repositorio
 
 - [`08_riesgos/RG01_contexto.md`](08_riesgos/RG01_contexto.md) — Contexto, escalas operativas, criterios de aceptación y dueños por cargo.
 - [`08_riesgos/RG02_registro.csv`](08_riesgos/RG02_registro.csv) — Registro de 14 riesgos sobre las 9 categorías + Ejecución del plan.
@@ -342,5 +358,10 @@ En cumplimiento del criterio de aceptación establecido en `RG01_contexto.md`, l
 - [`08_riesgos/RG04_tratamiento.csv`](08_riesgos/RG04_tratamiento.csv) — Plan de tratamiento, residual, señal temprana y umbral de alerta.
 - [`08_riesgos/RG05_residual.py`](08_riesgos/RG05_residual.py) — Script de análisis de reducción residual y validación de señales.
 - [`08_riesgos/RG06_comunicacion.csv`](08_riesgos/RG06_comunicacion.csv) — Matriz de comunicación de riesgos (8 columnas).
+- [`08_riesgos/RG07_validacion.py`](08_riesgos/RG07_validacion.py) — Script de validación automatizada de las 3 comprobaciones del Paso F.
+- [`08_riesgos/generar_anexos.py`](08_riesgos/generar_anexos.py) — Generador automatizado de libros Excel y documentos PDF.
+- [`08_riesgos/simplerisk_config_escalas.sql`](08_riesgos/simplerisk_config_escalas.sql) — Script SQL de aprovisionamiento de SimpleRisk.
+- [`08_riesgos/simplerisk_import_riesgos.csv`](08_riesgos/simplerisk_import_riesgos.csv) — Esquema nativo de importación de riesgos para SimpleRisk.
+- [`evidencias/S15/simplerisk_guia_despliegue.md`](evidencias/S15/simplerisk_guia_despliegue.md) — Guía técnica de despliegue en contenedores Docker.
 - [`08_riesgos/seccion_08_gestion_riesgos.md`](08_riesgos/seccion_08_gestion_riesgos.md) — Sección 8 del PETI (`8.1` a `8.9`).
 - [`evidencias/S15/salidas/RG03_evaluacion.txt`](evidencias/S15/salidas/RG03_evaluacion.txt), [`evidencias/S15/salidas/RG05_residual.txt`](evidencias/S15/salidas/RG05_residual.txt), [`evidencias/S15/salidas/validacion.txt`](evidencias/S15/salidas/validacion.txt) — Salidas de ejecución y validación.

@@ -1,7 +1,13 @@
 # 08_riesgos/RG05_residual.py
+import os
 import pandas as pd
 
-t = pd.read_csv("RG04_tratamiento.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.abspath(os.path.join(BASE_DIR, "..")) if os.path.basename(BASE_DIR) == "08_riesgos" else BASE_DIR
+DATA_DIR = os.path.join(ROOT_DIR, "08_riesgos")
+
+csv_file = os.path.join(DATA_DIR, "RG04_tratamiento.csv")
+t = pd.read_csv(csv_file)
 t["reduccion"] = t.Valor - t["Valor residual"]
 t["reduccion_pct"] = (t.reduccion / t.Valor * 100).round(0)
 
